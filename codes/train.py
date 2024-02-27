@@ -10,7 +10,7 @@ from transformers import Trainer, TrainingArguments, DataCollatorForLanguageMode
 from peft import prepare_model_for_kbit_training
 from peft import LoraConfig, get_peft_model
 
-from utils import get_datasets
+from utils.utils import get_datasets
 
 def get_config():
     p = argparse.ArgumentParser()
@@ -169,6 +169,7 @@ def main(config):
         target_modules=["q_proj", "up_proj", "o_proj", "k_proj", "down_proj", "gate_proj", "v_proj"],
         lora_dropout=config.lora_dropout,
         bias="none",
+        # use_rslora=True,
         task_type="CAUSAL_LM",
     )
 

@@ -2,8 +2,7 @@ import json
 import random
 import datasets
 
-from prompt import prompt
-
+from prompt import basic_prompt
 
 def get_datasets(input_fn, valid_ratio=0.05, valid_fn=None):
     data = get_json(input_fn)
@@ -18,5 +17,5 @@ def get_datasets(input_fn, valid_ratio=0.05, valid_fn=None):
 
     return train_dataset, valid_dataset
 
-def get_json(fn, prompt=prompt()):
+def get_json(fn, prompt=basic_prompt()):
     return [prompt.format(**json.loads(line)) for line in open(fn, "r")]

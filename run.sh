@@ -2,7 +2,7 @@ INPUT_FN=''
 OUTPUT_DIR_OR_PATH='./result'
 MODEL_NAME_OR_PATH='google/gemma-7b' 
 
-python train.py \
+python ./codes/train.py \
     --input_fn ${INPUT_FN} \
     --output_dir_path ${OUTPUT_DIR_OR_PATH} \
     --pretrained_model_name ${MODEL_NAME_OR_PATH} \
