@@ -169,14 +169,12 @@ def main(config):
         target_modules=["q_proj", "up_proj", "o_proj", "k_proj", "down_proj", "gate_proj", "v_proj"],
         lora_dropout=config.lora_dropout,
         bias="none",
-        # use_rslora=True,
         task_type="CAUSAL_LM",
     )
 
     model = get_peft_model(model, l_config)
 
-    # gpu_count = torch.cuda.device_count()
-    gpu_count = 1 
+    gpu_count = torch.cuda.device_count()
     total_batch_size = config.batch_size_per_device * gpu_count
     num_iterations_per_epoch = int((len(train_dataset) / total_batch_size) / config.gradient_accumulation_steps)
     logging_steps = max(10, int(num_iterations_per_epoch / config.num_logging_steps_per_epoch))
@@ -211,7 +209,6 @@ def main(config):
         bf16=True,
         bf16_full_eval=True,
         optim="paged_adamw_8bit"
-        # report_to="wandb",
     )
     
     trainer = Trainer(
