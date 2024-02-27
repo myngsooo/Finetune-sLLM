@@ -19,6 +19,6 @@ python ./codes/train.py \
     --num_eval_steps_per_epoch 5 \
     --num_save_steps_per_epoch 5 \
     --use_4bit \
-    --lora_r 644 \
-    --lora_alpha 16 \
+    --lora_r 4 \
+    --lora_alpha 32 \
     --lora_dropout 0.05 \
