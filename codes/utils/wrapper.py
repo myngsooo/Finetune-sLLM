@@ -1,4 +1,3 @@
-import json
 from datetime import datetime
 
 from threading import Thread
@@ -13,9 +12,9 @@ class LanguageModelWrapper:
             model_name,
             use_4bit=True,
             max_memory_map=None,
-            max_new_tokens=512,
+            max_new_tokens=256,
             eos_token_id=0,
-            do_sample=False,
+            do_sample=True,
         ):
         self.model_name = model_name
         self.use_4bit = use_4bit
@@ -37,6 +36,7 @@ class LanguageModelWrapper:
                 )
 
             self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+            
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_name,
                 device_map="auto",
@@ -78,7 +78,6 @@ class LanguageModelWrapper:
             yield new_token
 
         thread.join()
-
     def generate(self, input_text):
         generation_result = self.model.generate(
             **self.tokenizer(
@@ -90,10 +89,13 @@ class LanguageModelWrapper:
             early_stopping=True,
             eos_token_id=self.eos_token_id,
             do_sample=self.do_sample,
+            num_return_sequences=1,
+            no_repeat_ngram_size=2,
         )
         generated_text = self.tokenizer.decode(generation_result[0])
-
-        return generated_text
+        slide_len = len(input_text)
+        
+        return generated_text, slide_len
 
 class LoRAWrapper(LanguageModelWrapper):
     def __init__(
@@ -101,7 +103,7 @@ class LoRAWrapper(LanguageModelWrapper):
             checkpoint_dir_path,
             use_4bit=True,
             max_memory_map=None,
-            max_new_tokens=512,
+            max_new_tokens=64,
             eos_token_id=3,
             do_sample=False,
         ):
@@ -128,6 +130,9 @@ class LoRAWrapper(LanguageModelWrapper):
             )
         
         self.tokenizer = AutoTokenizer.from_pretrained(self.plm_config.base_model_name_or_path)
+        self.tokenizer.pad_token = self.tokenizer.eos_token
+        self.tokenizer.padding_side = "right"
+        
         self.model = PeftModel.from_pretrained(
             AutoModelForCausalLM.from_pretrained(
                 self.plm_config.base_model_name_or_path,
