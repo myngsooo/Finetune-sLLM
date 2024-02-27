@@ -8,7 +8,7 @@ python ./codes/train.py \
     --pretrained_model_name ${MODEL_NAME_OR_PATH} \
     --valid_ratio 0.025 \
     --max_length 2048 \
-    --num_train_epochs 34 \
+    --num_train_epochs 3 \
     --batch_size_per_device 1 \
     --gradient_accumulation_steps 4 \
     --learning_rate 1e-5 \
