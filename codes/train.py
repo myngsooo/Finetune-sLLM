@@ -204,8 +204,8 @@ def main(config):
         save_steps=save_steps,
         save_total_limit=5,
         half_precision_backend="auto",
-        bf16=True,
-        bf16_full_eval=True,
+        bf16=True,    # If you want to use fp16, change it to fp16.
+        bf16_full_eval=True,    # If you want to use fp16_full_eval, change it to fp16_full_eval.
         optim="paged_adamw_8bit"
     )
     
