@@ -93,9 +93,8 @@ class LanguageModelWrapper:
             no_repeat_ngram_size=2,
         )
         generated_text = self.tokenizer.decode(generation_result[0])
-        slide_len = len(input_text)
         
-        return generated_text, slide_len
+        return generated_text
 
 class LoRAWrapper(LanguageModelWrapper):
     def __init__(
