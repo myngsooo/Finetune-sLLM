@@ -203,8 +203,6 @@ def main(config):
         save_strategy="steps",
         save_steps=save_steps,
         save_total_limit=5,
-        # fp16=True,
-        # fp16_full_eval=True,
         half_precision_backend="auto",
         bf16=True,
         bf16_full_eval=True,
