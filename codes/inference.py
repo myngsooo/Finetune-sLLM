@@ -3,7 +3,6 @@ import datasets
 import pandas as pd
 
 from datasets import load_dataset
-# from bert_score import score
 from tqdm import tqdm
 from evaluate import load
 
@@ -28,7 +27,6 @@ def main(config):
         data = pd.DataFrame({'pred': pred})
         data.to_json(config.output_dir, orient="records", lines=True, force_ascii = False)
     
-    # _, _, bert_score = score(pred, gold_label, lang='en', verbose=True)
     bertscore = load('bertscore')
     results = bertscore.compute(predictions=pred, references=gold_label, model_type="microsoft/deberta-xlarge-mnli")
     print(results)
