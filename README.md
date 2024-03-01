@@ -79,6 +79,8 @@ python ./codes/inference.py \
 
 ## Result
 
+BERT score(precision) based on ```microsoft/deberta-xlarge-mnli``` is 0.688, which is the most promising embedding model in [here](https://docs.google.com/spreadsheets/d/1RKOVpselB98Nnh_EOC4A2BYn8_201tmPODpNWu4w7xI/edit#gid=0)
+
 ```
 {"pred":"### Answer:When a Canadian mortgage is up for renewal and the current contract term has expired, a lender is required to provide the homeowner with an option to choose subsequent payment terms[2]. This means the lender has the option of offering the same terms as before, negotiating new terms, and\/or declining to offer a renewal[3",
   "gold":"When renewing a mortgage in Canada, your lender must notify you in advance of the renewal date with your options for renewal terms[1][2]. Your mortgage will typically automatically renew or become in default if you don't take action[3]. Depending on your lender, you may be able to renew your mortgage as early as 6 months prior to your current mortgage term expiring[2][3][5]. RBC Royal Bank mortgage customers can choose Subsequent Payment Terms and be protected from an increase in interest rates for the interest type and term they selected[4]."}
