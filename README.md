@@ -9,7 +9,7 @@ First, run the following script to install the remaining dependencies.
 pip install -r requirements.txt
 ```
 
-### Download the training/dev dataset
+### Download the train/test dataset
 We use the [WebGLM-QA](https://huggingface.co/datasets/THUDM/webglm-qa) dataset, but if you prefer, you can explore alternative options.
 
 | **WebGLM-QA** | **train** | **dev** | **test** |
