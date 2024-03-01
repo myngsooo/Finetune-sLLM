@@ -14,7 +14,7 @@ We use the [WebGLM-QA](https://huggingface.co/datasets/THUDM/webglm-qa) dataset,
 
 | **WebGLM-QA** | **train** | **dev** | **test** |
 |:--------:|:--------:|:--------:|:--------:|
-| **num** | 43.6k | 1k | 0.4k |
+| **#** | 43.6k | 1k | 0.4k |
 
 ```bash
 cd ./codes/data
