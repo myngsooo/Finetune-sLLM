@@ -23,6 +23,8 @@ bash download
 
 ## Train
 
+You can run the commands below for train the model:
+
 ```bash
 bash run_train.sh
 ```
