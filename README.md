@@ -1,5 +1,5 @@
 # Finetune-sLLM for RAG
-This repo contains a implementation of fine-tuning sLLM for RAG, based on [open source code](https://github.com/kh-kim/sllm_finetune).
+This repo contains a implementation of fine-tuning sLLM for RAG, based on [open source](https://github.com/kh-kim/sllm_finetune).
 
 ## Requirements
 
