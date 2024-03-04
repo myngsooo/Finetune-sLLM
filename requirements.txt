@@ -3,4 +3,4 @@ peft
 bitsandbytes 
 accelerate 
 datasets
-bert_score
+evaluate
