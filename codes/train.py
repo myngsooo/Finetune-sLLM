@@ -166,6 +166,10 @@ def main(config):
     l_config = LoraConfig(
         r=config.lora_r,
         lora_alpha=config.lora_alpha,
+        # "embed_tokens", "wte", "lm_head" 임베딩 레이어 및 아웃풋 레이어
+        # "q_proj", "k_proj", "v_proj", "o_proj" 어텐션 연산이 이루어지는 레이어의 집합, o_proj는 self attention 출력 단계이기에 같이 pairing
+        # "gate_proj", "down_proj", "up_proj" feed forward 네트워크 내에서 사용되는 모듈중 gate 메커니즘
+        # "fc_in", "fc_out" feed forward 네트워크 중 fully connected하게 입력을 받는 층과 출력을 내보내는 곳을 같이 페어링
         target_modules=["q_proj", "up_proj", "o_proj", "k_proj", "down_proj", "gate_proj", "v_proj"],
         lora_dropout=config.lora_dropout,
         bias="none",
